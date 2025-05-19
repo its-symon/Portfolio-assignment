@@ -19,8 +19,8 @@ Make sure the following are installed on your system:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/portfolio.git
-cd portfolio
+git clone https://github.com/its-symon/Portfolio-assignment.git
+cd Portfolio-assignment
 ```
 
 ## 2. Install PHP dependencies
