@@ -72,6 +72,11 @@ php artisan migrate
 php artisan serve
 ```
 
+## Demo
+
+🎥 [Click here to view the demo](https://drive.google.com/file/d/1tTDizfw_BdES4JRtr__hDpQW60P-E8bK/view?usp=sharing)
+
+
 ## Author
 
 👤 **Symon**
