@@ -1,37 +1,47 @@
-name: CI
+name: Laravel CI
 
 on:
   push:
     branches:
       - main
   pull_request:
-    branches:
+    branches: 
       - main
 
 jobs:
-  build:
+  laravel-build:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - uses: actions/checkout@v3
+    
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.2'
+        extensions: mbstring, dom, fileinfo, mysql, gd, curl, zip, xml
+        coverage: none
+    
+    - name: Copy .env
+      run: php -r "file_exists('.env') || copy('.env.example', '.env');"
+    
+    - name: Install Dependencies
+      run: composer install --no-interaction --prefer-dist --optimize-autoloader
+    
+    - name: Generate key
+      run: php artisan key:generate
+    
+    - name: Set Directory Permissions
+      run: chmod -R 777 storage bootstrap/cache
+    
+    - name: Clear Config Cache
+      run: php artisan config:clear
+    
+    - name: Clear Route Cache
+      run: php artisan route:clear
+    
+    - name: Clear View Cache
+      run: php artisan view:clear
 
-      - name: Set up PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.0'
-          extensions: mbstring, xml, bcmath, curl, gd, mysqli, pdo, pdo_mysql
-
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-
-      - name: Cache Composer dependencies
-        uses: actions/cache@v3
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: ${{ runner.os }}-composer-
-
-      - name: Install Composer dependencies
-        run: composer install --no-progress --prefer-dist --no-scripts --no-interaction
+    - name: Build Successfully
+      run: echo "Build completed successfully!"
