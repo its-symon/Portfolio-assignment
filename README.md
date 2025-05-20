@@ -49,12 +49,7 @@ SESSION_DRIVER=database
 php artisan key:generate
 ```
 
-## 5. Set Permissions
-```
-chmod -R 775 storage bootstrap/cache
-```
-
-## 6. Create PostgreSQL database
+## 5. Create PostgreSQL database
 Login to psql and run:
 ```
 CREATE DATABASE laravel;
@@ -62,12 +57,12 @@ CREATE USER laraveluser WITH PASSWORD 'secret';
 GRANT ALL PRIVILEGES ON DATABASE laravel TO laraveluser;
 ```
 
-## 7. Run the migrations
+## 6. Run the migrations
 ```
 php artisan migrate
 ```
 
-## 8. Serve the App
+## 7. Serve the App
 ```
 php artisan serve
 ```
