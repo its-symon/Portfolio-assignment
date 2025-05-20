@@ -28,11 +28,10 @@ cd Portfolio-assignment
 composer install
 ```
 
-## 3. Create .env file
+## 3. Create .env file(For this project, I am also uploading the .env file so that it becomes easier to run the app.)
 ```
 cp .env.example .env
 ```
-For this project, I am also uploading the .env file so that it becomes easier to run the app. 
 
 #### Update the following variables in .env to match the postgreSQL configuration:
 ```
