@@ -32,6 +32,7 @@ composer install
 ```
 cp .env.example .env
 ```
+For this project, I am also uploading the .env file so that it becomes easier to run the app. 
 
 #### Update the following variables in .env to match the postgreSQL configuration:
 ```
